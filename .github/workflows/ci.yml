@@ -41,18 +41,29 @@ jobs:
         run: |
           dvc pull
 
-      - name: Patch MLflow SQLite Paths for CI Environment
+      - name: Patch MLflow SQLite Paths via Regex
         run: |
           python -c "
-          import sqlite3, os
+          import sqlite3, os, re
           conn = sqlite3.connect('mlflow.db')
           c = conn.cursor()
-          old_path = '/home/manoj_prathapa23/23F1001473_IITMBS_MLOPS_OPPE1_MAY_2026'
-          new_path = os.getcwd()
-          c.execute('UPDATE runs SET artifact_uri = REPLACE(artifact_uri, ?, ?)', (old_path, new_path))
-          c.execute('UPDATE model_versions SET source = REPLACE(source, ?, ?)', (old_path, new_path))
+          new_root = 'file://' + os.getcwd()
+          
+          c.execute('SELECT run_uuid, artifact_uri FROM runs')
+          for run_id, uri in c.fetchall():
+              if uri:
+                  new_uri = re.sub(r'file://.*/mlruns', new_root + '/mlruns', uri)
+                  c.execute('UPDATE runs SET artifact_uri = ? WHERE run_uuid = ?', (new_uri, run_id))
+          
+          c.execute('SELECT name, version, source FROM model_versions')
+          for name, version, source in c.fetchall():
+              if source:
+                  new_source = re.sub(r'file://.*/mlruns', new_root + '/mlruns', source)
+                  c.execute('UPDATE model_versions SET source = ? WHERE name = ? AND version = ?', (new_source, name, version))
+          
           conn.commit()
           conn.close()
+          print('Successfully patched MLflow database paths using Regex!')
           "
 
       - name: Run CI Evaluation & Feature Sanity Tests (MLflow Model Registry)
