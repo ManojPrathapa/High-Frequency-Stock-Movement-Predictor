@@ -1,0 +1,5 @@
+[core]
+    no_scm = True
+    remote = gcs_remote
+['remote "gcs_remote"']
+    url = gs://f1001473-mlops-week1-oppe-bucket/dvc_store
