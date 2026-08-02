@@ -33,6 +33,7 @@ This project solves these challenges by implementing a strict MLOps architecture
 
 ## 🏗️ System Architecture & Workflow Tree
 
+```text
 23F1001473_IITMBS_MLOPS_OPPE1_MAY_2026/
 │
 ├── .github/
@@ -52,8 +53,7 @@ This project solves these challenges by implementing a strict MLOps architecture
 ├── requirements.txt               # Pinned Python Dependencies
 ├── train.py                       # Iterative Model Training Script
 └── tune_and_register.py           # MLflow Hyperparameter Tuning & Model Registry
-
-
+```
 
 ---
 
