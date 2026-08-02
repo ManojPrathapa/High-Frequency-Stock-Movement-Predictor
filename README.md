@@ -8,7 +8,7 @@
 ## 📖 Project Overview
 This repository contains a production-grade **Machine Learning Operations (MLOps)** pipeline designed to predict short-term (5-minute) stock price movements using high-frequency trading data. 
 
-While training a machine learning model is relatively straightforward, **operationalizing it is a complex engineering challenge.** This project demonstrates a complete, automated lifecycle: from versioning raw financial data and centralizing feature engineering, to tracking hyperparameter sweeps, registering models, and automating CI/CD evaluations.
+While training a machine learning model is relatively straightforward, **operationalizing it is a complex engineering challenge.** This project demonstrates a complete, automated lifecycle: from versioning raw financial data and centralizing feature engineering, to tracking hyperparameter sweeps, registering models, and automating CI/CD evaluations..
 
 ---
 
