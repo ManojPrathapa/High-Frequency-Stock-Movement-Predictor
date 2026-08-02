@@ -6,4 +6,7 @@ __pycache__/
 *.parquet
 .dvc/cache/
 .dvc/tmp/
+mlflow.db
+mlruns/
+mlartifacts/
 sa-key.json
