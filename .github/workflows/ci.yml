@@ -43,7 +43,6 @@ jobs:
 
       - name: Run MLflow Hyperparameter Sweep & Register Model Natively
         run: |
-          # Force delete any old database/artifacts restored by Git checkout
           rm -rf mlflow.db mlruns/ mlartifacts/
           python tune_and_register.py
 
@@ -51,10 +50,10 @@ jobs:
         run: |
           python eval_ci.py
 
-      - name: Post CML Comment on PR / Commit
-        uses: iterative/setup-cml@v2
-        with:
-          version: '1.x'
+      - name: Install CML CLI via NPM
+        run: |
+          npm install -g @iterative/cml
+
       - name: Send CML Report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
