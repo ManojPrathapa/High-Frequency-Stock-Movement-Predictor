@@ -41,6 +41,20 @@ jobs:
         run: |
           dvc pull
 
+      - name: Patch MLflow SQLite Paths for CI Environment
+        run: |
+          python -c "
+          import sqlite3, os
+          conn = sqlite3.connect('mlflow.db')
+          c = conn.cursor()
+          old_path = '/home/manoj_prathapa23/23F1001473_IITMBS_MLOPS_OPPE1_MAY_2026'
+          new_path = os.getcwd()
+          c.execute('UPDATE runs SET artifact_uri = REPLACE(artifact_uri, ?, ?)', (old_path, new_path))
+          c.execute('UPDATE model_versions SET source = REPLACE(source, ?, ?)', (old_path, new_path))
+          conn.commit()
+          conn.close()
+          "
+
       - name: Run CI Evaluation & Feature Sanity Tests (MLflow Model Registry)
         run: |
           python eval_ci.py
