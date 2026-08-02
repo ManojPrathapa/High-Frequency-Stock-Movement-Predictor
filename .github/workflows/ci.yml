@@ -52,7 +52,7 @@ jobs:
 
       - name: Install CML CLI via NPM
         run: |
-          npm install -g @iterative/cml
+          npm install -g @dvcorg/cml
 
       - name: Send CML Report
         env:
