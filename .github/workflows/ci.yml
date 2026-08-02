@@ -43,6 +43,8 @@ jobs:
 
       - name: Run MLflow Hyperparameter Sweep & Register Model Natively
         run: |
+          # Force delete any old database/artifacts restored by Git checkout
+          rm -rf mlflow.db mlruns/ mlartifacts/
           python tune_and_register.py
 
       - name: Run CI Evaluation & Feature Sanity Tests
