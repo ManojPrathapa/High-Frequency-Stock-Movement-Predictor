@@ -31,9 +31,9 @@ jobs:
 
       - name: Pull Versioned Test Data via DVC
         run: |
-          dvc pull || echo "Local DVC files already present in checkout"
+          dvc pull
 
-      - name: Run CI Evaluation & Feature Sanity Tests
+      - name: Run CI Evaluation & Feature Sanity Tests (MLflow Model Registry)
         run: |
           python eval_ci.py
 
@@ -45,4 +45,4 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cml comment create report.md --pr || cml comment create report.md --commit || echo "CML Report generated locally"
+          cml comment create report.md --pr || cml comment create report.md --commit
