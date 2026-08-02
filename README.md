@@ -1,13 +1,9 @@
-
-```markdown
 # 📈 High-Frequency Stock Movement Predictor: End-to-End MLOps Pipeline
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Python-3.12-blue.svg?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/MLOps-DVC%20%7C%20MLflow%20%7C%20Feast-orange?style=flat-square" alt="MLOps Stack">
-  <img src="https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF.svg?style=flat-square&logo=github&logoColor=white" alt="CI/CD Status">
-  <img src="https://img.shields.io/badge/GCP-Cloud%20Storage-4285F4.svg?style=flat-square&logo=googlecloud&logoColor=white" alt="Cloud Storage">
-</p>
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg?style=flat-square&logo=python)](https://www.python.org/)
+[![MLOps Stack](https://img.shields.io/badge/MLOps-DVC%20%7C%20MLflow%20%7C%20Feast-orange?style=flat-square)](https://mlflow.org/)
+[![CI/CD Status](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF.svg?style=flat-square&logo=github)](https://github.com/features/actions)
+[![Cloud Storage](https://img.shields.io/badge/GCP-Cloud%20Storage-4285F4.svg?style=flat-square&logo=googlecloud)](https://cloud.google.com/storage)
 
 ## 📖 Project Overview
 This repository contains a production-grade **Machine Learning Operations (MLOps)** pipeline designed to predict short-term (5-minute) stock price movements using high-frequency trading data. 
@@ -37,7 +33,6 @@ This project solves these challenges by implementing a strict MLOps architecture
 
 ## 🏗️ System Architecture & Workflow Tree
 
-```text
 23F1001473_IITMBS_MLOPS_OPPE1_MAY_2026/
 │
 ├── .github/
@@ -58,7 +53,7 @@ This project solves these challenges by implementing a strict MLOps architecture
 ├── train.py                       # Iterative Model Training Script
 └── tune_and_register.py           # MLflow Hyperparameter Tuning & Model Registry
 
-```
+
 
 ---
 
