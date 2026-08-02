@@ -41,29 +41,44 @@ jobs:
         run: |
           dvc pull
 
-      - name: Patch MLflow SQLite Paths via Regex
+      - name: Re-link MLflow SQLite Paths for CI Runner
         run: |
           python -c "
           import sqlite3, os, re
           conn = sqlite3.connect('mlflow.db')
           c = conn.cursor()
-          new_root = 'file://' + os.getcwd()
           
+          # Target path on GitHub Actions runner
+          target_dir = os.path.abspath('mlruns')
+          target_file_uri = 'file://' + target_dir
+          
+          def fix_path(val, use_file_prefix=True):
+              if not val:
+                  return val
+              replacement = target_file_uri if use_file_prefix else target_dir
+              # Replace anything before /mlruns with the runner target
+              if '/mlruns' in val:
+                  return re.sub(r'^.*?(/mlruns.*)$', replacement + r'\1', val).replace('/mlruns/mlruns', '/mlruns')
+              return val
+          
+          # Update runs table
           c.execute('SELECT run_uuid, artifact_uri FROM runs')
           for run_id, uri in c.fetchall():
-              if uri:
-                  new_uri = re.sub(r'file://.*/mlruns', new_root + '/mlruns', uri)
-                  c.execute('UPDATE runs SET artifact_uri = ? WHERE run_uuid = ?', (new_uri, run_id))
-          
+              c.execute('UPDATE runs SET artifact_uri = ? WHERE run_uuid = ?', (fix_path(uri, True), run_id))
+              
+          # Update model_versions table (source column)
           c.execute('SELECT name, version, source FROM model_versions')
-          for name, version, source in c.fetchall():
-              if source:
-                  new_source = re.sub(r'file://.*/mlruns', new_root + '/mlruns', source)
-                  c.execute('UPDATE model_versions SET source = ? WHERE name = ? AND version = ?', (new_source, name, version))
-          
+          for name, ver, src in c.fetchall():
+              c.execute('UPDATE model_versions SET source = ? WHERE name = ? AND version = ?', (fix_path(src, True), name, ver))
+              
+          # Update experiments table
+          c.execute('SELECT experiment_id, artifact_location FROM experiments')
+          for exp_id, loc in c.fetchall():
+              c.execute('UPDATE experiments SET artifact_location = ? WHERE experiment_id = ?', (fix_path(loc, True), exp_id))
+              
           conn.commit()
           conn.close()
-          print('Successfully patched MLflow database paths using Regex!')
+          print('MLflow SQLite database successfully re-linked to runner directory!')
           "
 
       - name: Run CI Evaluation & Feature Sanity Tests (MLflow Model Registry)
