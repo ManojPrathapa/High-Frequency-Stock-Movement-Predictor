@@ -1,0 +1,23 @@
+artifact_path: /home/manoj_prathapa23/23F1001473_IITMBS_MLOPS_OPPE1_MAY_2026/mlruns/1/models/m-77d31740b5c9497cb786528fa63831f7/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+mlflow_version: 3.15.0
+model_id: m-77d31740b5c9497cb786528fa63831f7
+model_size_bytes: 10399232
+model_uuid: m-77d31740b5c9497cb786528fa63831f7
+prompts: null
+run_id: b06c802c38684800939bafebd1b7d367
+utc_time_created: '2026-08-02 11:16:48.122797'
