@@ -1,0 +1,37 @@
+
+O
+/
+__dummy"
+__dummy_idJstock_movement_predictor
+úÉ¼Ó¥ñÈúÉ¼Ó¥ñÈ
+n
+N
+
+stock_nameName of the stock ticker"
+stock_nameJstock_movement_predictor
+úÉ¼ÓØæıÈúÉ¼ÓØæıÈ1"$b64d1024-2649-434a-8c92-d66807c01118*‚Ê¼ÓĞÚÓĞ2×
+¢
+stock_rolling_featuresstock_movement_predictor
+stock_name"
+rolling_avg_10"
+volume_sum_102€†°–:—	timestampZdata/stock_features.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢stock_features_source’úÉ¼Óøß¢³"úÉ¼Ó¨ÜÜÈ@b
+
+stock_name’latest0
+úÉ¼ÓĞ˜ŠÉ‚Ê¼ÓÀò±Ğ
+€¡ÃûÉ¼Ó0RÆ
+Ã
+,feast.infra.online_stores.sqlite.SqliteTable"’
+_/home/manoj_prathapa23/23F1001473_IITMBS_MLOPS_OPPE1_MAY_2026/feature_repo/data/online_store.db/stock_movement_predictor_stock_rolling_featuresb²	timestampZdata/stock_features.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢stock_features_sourceªstock_movement_predictor’úÉ¼Óøß¢³"úÉ¼Ó¨ÜÜÈŠ:
+
+stock_movement_predictor
+úÉ¼Ó¨ãï³úÉ¼Ó¨ãï³’½
+º
+stock_rolling_featuresstock_movement_predictor"feature_view*Ã
+¢
+stock_rolling_featuresstock_movement_predictor
+stock_name"
+rolling_avg_10"
+volume_sum_102€†°–:—	timestampZdata/stock_features.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢stock_features_source’úÉ¼Óøß¢³"úÉ¼Ó¨ÜÜÈ@b
+
+stock_name’latest
+úÉ¼ÓĞ˜ŠÉúÉ¼ÓĞ˜ŠÉ2úÉ¼Óøà³ÉB$fd41fe27-654d-4897-9891-65b84184c717
